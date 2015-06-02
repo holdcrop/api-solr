@@ -14,5 +14,5 @@ class BadRequest extends \Exception {
     /**
      * @var int
      */
-    protected $_code = 400;
+    protected $code = 400;
 }

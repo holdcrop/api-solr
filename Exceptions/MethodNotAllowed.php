@@ -13,5 +13,5 @@ class MethodNotAllowed extends \Exception {
     /**
      * @var int
      */
-    protected $_code = 405;
+    protected $code = 405;
 }

@@ -6,11 +6,10 @@
  * Time: 14:41
  */
 
-namespace http\middleware;
+namespace Http\Middleware;
 
-use Http\App\Middleware\Contract\MiddlewareContract;
-use Http\App\Middleware\Middleware;
-use Http\App\Request\Request;
+use Http\Middleware\Contract\MiddlewareContract;
+use Http\Request\Request;
 
 class RateLimiter extends Middleware implements MiddlewareContract {
 

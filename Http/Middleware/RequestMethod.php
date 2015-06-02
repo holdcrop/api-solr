@@ -6,13 +6,11 @@
  * Time: 14:19
  */
 
-namespace http\middleware;
+namespace Http\Middleware;
 
-
-use exceptions\MethodNotAllowed;
-use Http\App\Middleware\Contract\MiddlewareContract;
-use Http\App\Middleware\Middleware;
-use Http\App\Request\Request;
+use Exceptions\MethodNotAllowed;
+use Http\Middleware\Contract\MiddlewareContract;
+use Http\Request\Request;
 
 class RequestMethod extends Middleware implements MiddlewareContract {
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Http\App\Middleware;
+namespace Http\Middleware;
 
 use Exceptions\BadRequest;
-use Http\App\Middleware\Contract\MiddlewareContract;
-use Http\App\Request;
+use Http\Middleware\Contract\MiddlewareContract;
+use Http\Request\Request;
 
 class ContentType extends Middleware implements MiddlewareContract {
 

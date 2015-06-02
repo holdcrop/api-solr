@@ -6,7 +6,7 @@
  * Time: 08:39
  */
 
-namespace Http\App\Middleware\Contract;
+namespace Http\Middleware\Contract;
 
 use Http\Request\Request;
 

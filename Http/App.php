@@ -3,6 +3,7 @@
 namespace Http;
 
 use Http\Request\Request;
+use Http\Response\Response;
 
 class App {
 
@@ -11,7 +12,10 @@ class App {
      */
     protected $_request = null;
 
-
+    /**
+     * @var null|Response
+     */
+    protected $_response = null;
 
     /**
      * @var array
@@ -27,7 +31,23 @@ class App {
             $_POST,
             http_get_request_body()
         );
+
+        $this->_response = new Response();
 	}
+
+    /**
+     * @return Request|null
+     */
+    public function getRequest() {
+        return $this->_request;
+    }
+
+    /**
+     * @return Response|null
+     */
+    public function getResponse() {
+        return $this->_response;
+    }
 
     public function run() {
 
