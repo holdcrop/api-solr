@@ -24,6 +24,7 @@ class App {
 	
 	public function __construct() {
 
+        // Request
         $this->_request = new Request(
             $_SERVER,
             http_get_request_headers(),
@@ -32,6 +33,14 @@ class App {
             http_get_request_body()
         );
 
+        // Middleware
+        $this->_middleware = array(
+            new Middleware\RequestMethod(),
+            new Middleware\ContentType(),
+            new Middleware\RateLimiter()
+        );
+
+        // Response
         $this->_response = new Response();
 	}
 
@@ -51,5 +60,14 @@ class App {
 
     public function run() {
 
+    }
+
+    private function _runMiddleware() {
+
+        $middleware = $this->_middleware;
+
+        return function($middleware) {
+
+        };
     }
 }

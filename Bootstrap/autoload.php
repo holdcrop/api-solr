@@ -2,4 +2,4 @@
 
 require(__DIR__ . '/../vendor/autoload.php');
 
-$app = new \Http\App\App();
+$app = new \Http\App();
