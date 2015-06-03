@@ -1,18 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pierce
- * Date: 02/06/15
- * Time: 08:39
- */
 
 namespace Http\Middleware\Contract;
 
+use Config\ConfigManager;
 use Http\Request\Request;
 
 interface MiddlewareContract {
 
-    public function handle(Request $request);
+    public function __construct(ConfigManager $config);
 
-    public function next(Request $request);
+    public function handle(Request $request);
 }

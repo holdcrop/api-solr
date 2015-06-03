@@ -31,5 +31,6 @@ class Handler {
         $this->_app->getResponse()->setStatusCode($e->getCode());
         $this->_app->getResponse()->setBodyEncoded(array('message' => $e->getMessage()));
         $this->_app->getResponse()->send();
+        $this->_app->terminate();
     }
 }

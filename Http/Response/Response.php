@@ -67,12 +67,13 @@ class Response {
 
         // Set the headers
         foreach($this->_headers as $header => $value) {
-            header($header . ': ' . $value);
+            header($header . ':' . $value);
         }
 
         // Set the body
-        http_send_data($this->_body);
+        echo json_encode($this->_body);
 
-        ht
+        // Send the response
+        ob_flush();
     }
 }

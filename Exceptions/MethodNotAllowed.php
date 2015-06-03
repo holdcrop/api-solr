@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pierce
- * Date: 02/06/15
- * Time: 14:18
- */
 
-namespace exceptions;
+namespace Exceptions;
 
 class MethodNotAllowed extends \Exception {
 
@@ -14,4 +8,9 @@ class MethodNotAllowed extends \Exception {
      * @var int
      */
     protected $code = 405;
+
+    /**
+     * @var string
+     */
+    protected $message = 'The request method specified is not allowed.';
 }

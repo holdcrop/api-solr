@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pierce
- * Date: 02/06/15
- * Time: 14:19
- */
 
 namespace Http\Middleware;
 
@@ -29,9 +23,7 @@ class RequestMethod extends Middleware implements MiddlewareContract {
 
         if(in_array($request->getServer('REQUEST_METHOD'), $this->_methods) != true) {
 
-            throw new MethodNotAllowed('The request method specified is not allowed.');
+            throw new MethodNotAllowed();
         }
-
-        $this->next($request);
     }
 }

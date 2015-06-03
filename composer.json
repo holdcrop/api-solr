@@ -1,5 +1,12 @@
 {
 	"require": {
 		"solarium/solarium": "3.3.0"
-	}
+	},
+    "autoload": {
+        "psr-4" : {
+            "Http\\": "Http",
+            "Exceptions\\": "Exceptions",
+            "Config\\": "config"
+        }
+    }
 }

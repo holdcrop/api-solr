@@ -14,11 +14,9 @@ class ContentType extends Middleware implements MiddlewareContract {
      */
 	public function handle(Request $request) {
 
-        if($request->getHeader('Content-type') !== 'application/json') {
+        if($request->getHeader('Content-type') !== 'application/json' && $request->getHeader('Content-Type') !== 'application/json') {
 
-            throw new BadRequest('Incorrect content-type header specified.');
+            throw new BadRequest();
         }
-
-        $this->next($request);
 	}
 }
