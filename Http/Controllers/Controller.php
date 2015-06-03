@@ -1,11 +1,11 @@
 <?php
 
-namespace Http\Middleware;
+namespace Http\Controllers;
 
 use Config\ConfigManager;
-use Http\Middleware\Contract\MiddlewareContract;
+use Http\Controllers\Contract\ControllerContract;
 
-abstract class Middleware implements MiddlewareContract {
+abstract class Controller implements ControllerContract {
 
     /**
      * @var ConfigManager

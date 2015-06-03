@@ -4,18 +4,21 @@ namespace Http\Controllers;
 
 use Http\Request\Request;
 use Http\Response\Response;
+use Resources\Entities\APIMessage;
 use Solarium\Client;
 
-class APIController {
+class APIController extends Controller {
 
     /**
      * @param   Request     $request
      * @param   Response    $response
      * @return  Response
      */
-    public function convert(Request $request, Response $response) {
+    public function post(Request $request, Response $response) {
 
-        //$solr = new Client();
+        $message = new APIMessage($request->getBody());
+
+        $solr = new Client($this->_config->offsetGet('solr'));
 
         $response->setBody(array('message' => 'Here'));
 

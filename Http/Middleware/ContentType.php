@@ -6,7 +6,7 @@ use Exceptions\BadRequest;
 use Http\Middleware\Contract\MiddlewareContract;
 use Http\Request\Request;
 
-class ContentType extends Middleware implements MiddlewareContract {
+class ContentType extends Middleware {
 
     /**
      * @param   Request $request

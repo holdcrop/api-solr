@@ -88,7 +88,7 @@ class App {
 
         // Create the controller
         $controller = 'Http\\Controllers\\' . $route_details['controller'];
-        $controller = new $controller();
+        $controller = new $controller($this->_config);
 
         // Perform the action
         $controller->{$route_details['action']}($this->_request, $this->_response);

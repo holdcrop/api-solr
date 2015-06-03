@@ -6,14 +6,7 @@ use Exceptions\MethodNotAllowed;
 use Http\Middleware\Contract\MiddlewareContract;
 use Http\Request\Request;
 
-class RequestMethod extends Middleware implements MiddlewareContract {
-
-    /**
-     * Accepted Request Methods
-     *
-     * @var array
-     */
-    protected $_methods = array('POST');
+class RequestMethod extends Middleware {
 
     /**
      * @param   Request $request
@@ -21,7 +14,9 @@ class RequestMethod extends Middleware implements MiddlewareContract {
      */
     public function handle(Request $request) {
 
-        if(in_array($request->getServer('REQUEST_METHOD'), $this->_methods) != true) {
+        $methods = $this->_config->offsetGet('request_methods')->toArray();
+
+        if(in_array($request->getServer('REQUEST_METHOD'), $methods) != true) {
 
             throw new MethodNotAllowed();
         }

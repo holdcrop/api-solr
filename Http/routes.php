@@ -2,4 +2,4 @@
 
 use Http\Router;
 
-Router::post('/convert', 'APIController', 'convert');
+Router::post('/convert', 'APIController', 'post');

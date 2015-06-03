@@ -8,7 +8,7 @@ use Exceptions\TooManyRequests;
 use Http\Middleware\Contract\MiddlewareContract;
 use Http\Request\Request;
 
-class RateLimiter extends Middleware implements MiddlewareContract {
+class RateLimiter extends Middleware {
 
     /**
      * @param   Request $request

@@ -150,11 +150,26 @@ class ConfigManager implements \Iterator, \Countable, \ArrayAccess {
         return array_key_exists($offset, $this->_config);
     }
 
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
     public function offsetSet($offset, $value) {
 
     }
 
+    /**
+     * @param mixed $offset
+     */
     public function offsetUnset($offset) {
 
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray() {
+
+        return (array) current($this->_config);
     }
 }
