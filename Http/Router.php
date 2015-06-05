@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pierce
- * Date: 03/06/15
- * Time: 08:40
- */
 
 namespace Http;
 
@@ -21,13 +15,15 @@ class Router {
      * @param   string  $pattern
      * @param   string  $controller
      * @param   string  $action
+     * @param   array   $middleware
      */
-    public static function get($pattern, $controller, $action) {
+    public static function get($pattern, $controller, $action, array $middleware = array()) {
 
         self::$_routes['get'][] = array(
             'pattern'       => $pattern,
             'controller'    => $controller,
-            'action'        => $action
+            'action'        => $action,
+            'middleware'    => $middleware
         );
     }
 
@@ -35,13 +31,15 @@ class Router {
      * @param   string  $pattern
      * @param   string  $controller
      * @param   string  $action
+     * @param   array   $middleware
      */
-    public static function post($pattern, $controller, $action) {
+    public static function post($pattern, $controller, $action, array $middleware = array()) {
 
         self::$_routes['post'][] = array(
             'pattern'       => $pattern,
             'controller'    => $controller,
-            'action'        => $action
+            'action'        => $action,
+            'middleware'    => $middleware
         );
     }
 
@@ -65,7 +63,8 @@ class Router {
 
                 return array(
                     'controller'    => $route['controller'],
-                    'action'        => $route['action']
+                    'action'        => $route['action'],
+                    'middleware'    => $route['middleware']
                 );
             }
         }

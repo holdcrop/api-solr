@@ -12,6 +12,11 @@ class Response {
     );
 
     /**
+     * @var string
+     */
+    protected $_view = null;
+
+    /**
      * @var string|null
      */
     protected $_body = null;
@@ -44,6 +49,20 @@ class Response {
     }
 
     /**
+     * @param   string  $view
+     * @param   array   $options
+     */
+    public function setView($view, array $options = array()) {
+        // Start the output buffer
+        ob_start();
+
+        // Get the file
+        require(__DIR__ . '/../../Resources/Views/' . $view);
+
+        $this->_view = ob_get_clean();
+    }
+
+    /**
      * @param array|object $body
      */
     public function setBodyEncoded($body) {
@@ -62,6 +81,21 @@ class Response {
      */
     public function send() {
 
+        if($this->_view !== null) {
+
+            $this->_sendHTML();
+        }
+        else {
+
+            $this->_sendJSON();
+        }
+    }
+
+    /**
+     * Send JSON response
+     */
+    private function _sendJSON() {
+
         // Set the response code
         http_response_code($this->_status_code);
 
@@ -71,9 +105,23 @@ class Response {
         }
 
         // Set the body
-        echo json_encode($this->_body);
+        echo $this->_body;
 
         // Send the response
+        ob_flush();
+    }
+
+    /**
+     * Send HTML response
+     */
+    private function _sendHTML() {
+
+        // Start the output buffer
+        ob_start();
+
+        echo $this->_view;
+
+        // Close the buffer
         ob_flush();
     }
 }

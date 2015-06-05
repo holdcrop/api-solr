@@ -3,7 +3,6 @@
 namespace Http\Middleware;
 
 use Exceptions\BadRequest;
-use Http\Middleware\Contract\MiddlewareContract;
 use Http\Request\Request;
 
 class ContentType extends Middleware {
@@ -14,7 +13,9 @@ class ContentType extends Middleware {
      */
 	public function handle(Request $request) {
 
-        if($request->getHeader('Content-type') !== 'application/json' && $request->getHeader('Content-Type') !== 'application/json') {
+        $header = $this->_config->offsetGet('headers')->offsetGet('content-type');
+
+        if($request->getHeader('Content-Type') !== $header) {
 
             throw new BadRequest();
         }
