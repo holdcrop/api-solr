@@ -18,9 +18,30 @@ class APIController extends Controller {
 
         $message = new APIMessage($request->getBody());
 
-        $solr = new Client($this->_config->offsetGet('solr'));
+        // Get the config
+        $solr_config = $this->_config->offsetGet('solr')->getConfig();
 
-        $response->setBodyEncoded($message);
+        // Create the Solarium Config array
+        $solr_config = array(
+            'endpoint'   => array(
+                $solr_config['endpoint']    => array(
+                    'host'      => $solr_config['host'],
+                    'port'      => $solr_config['port'],
+                    'path'      => $solr_config['path'],
+                    'timeout'   => $solr_config['timeout'],
+                )
+            )
+        );
+
+        $solr = new Client($solr_config);
+
+        $update = $solr->createUpdate();
+        $doc = $update->createDocument($message->jsonSerialize());
+
+        $update->addDocument($doc);
+        $update->addCommit();
+
+        $response->setBodyEncoded(array('success' => $solr->update($update)->getResponse()));
 
         return $response;
     }

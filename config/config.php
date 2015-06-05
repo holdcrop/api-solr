@@ -18,13 +18,10 @@ return array(
     ),
     // Solr
     'solr'              => array(
-        'endpoint' => array(
-            'localhost' => array(
-                'host'      => '127.0.0.1',
-                'port'      => 8983,
-                'path'      => '/solr/currency',
-                'timeout'   => 500
-            )
-        )
+        'endpoint'  => 'localhost',
+        'host'      => '127.0.0.1',
+        'port'      => 8983,
+        'path'      => '/solr/currency_fair',
+        'timeout'   => 500
     )
 );
