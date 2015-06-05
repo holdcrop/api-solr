@@ -3,8 +3,9 @@
 namespace Resources\Entities;
 
 use Exceptions\BadRequest;
+use Resources\Entities\Contract\APIMessageContract;
 
-class APIMessage implements \JsonSerializable {
+class APIMessage implements APIMessageContract, \JsonSerializable {
 
     /**
      * Required fields for the message
@@ -271,14 +272,14 @@ class APIMessage implements \JsonSerializable {
     public function jsonSerialize() {
 
         return array(
-            'userid'                => $this->_userid,
-            'currencyFrom'          => $this->_currencyFrom,
-            'currencyTo'            => $this->_currencyTo,
-            'amountSell'            => $this->_amountSell,
-            'amountBuy'             => $this->_amountBuy,
-            'rate'                  => $this->_rate,
-            'timePlaced'            => $this->_timePlaced,
-            'originatingCountry'    => $this->_originatingCountry
+            self::USER_ID_SOLR_FIELD                => $this->_userid,
+            self::CURRENCY_FROM_SOLR_FIELD          => $this->_currencyFrom,
+            self::CURRENCY_TO_SOLR_FIELD            => $this->_currencyTo,
+            self::AMOUNT_SELL_SOLR_FIELD            => $this->_amountSell,
+            self::AMOUNT_BUY_SOLR_FIELD             => $this->_amountBuy,
+            self::RATE_SOLR_FIELD                   => $this->_rate,
+            self::TIME_PLACED_SOLR_FIELD            => $this->_timePlaced->format('Y-m-d\TH:i:s\Z'),
+            self::ORIGINATING_COUNTRY_SOLR_FIELD    => $this->_originatingCountry
         );
     }
 }
