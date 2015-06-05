@@ -4,7 +4,7 @@ namespace Resources\Entities;
 
 use Exceptions\BadRequest;
 
-class APIMessage {
+class APIMessage implements \JsonSerializable {
 
     /**
      * Required fields for the message
@@ -96,6 +96,11 @@ class APIMessage {
      */
     private function _validate($message) {
 
+        if(!is_array($message)) {
+
+            return false;
+        }
+
         return $this->_required_fields === array_keys($message);
     }
 
@@ -171,7 +176,7 @@ class APIMessage {
      * @throws  BadRequest
      */
     public function setAmountSell($amountSell) {
-        if(ctype_digit($amountSell)) {
+        if(is_numeric($amountSell)) {
             $this->_amountSell = $amountSell;
         }
         else {
@@ -191,7 +196,7 @@ class APIMessage {
      * @throws  BadRequest
      */
     public function setAmountBuy($amountBuy) {
-        if(ctype_digit($amountBuy)) {
+        if(is_numeric($amountBuy)) {
             $this->_amountBuy = $amountBuy;
         }
         else {
@@ -211,7 +216,7 @@ class APIMessage {
      * @throws  BadRequest
      */
     public function setRate($rate) {
-        if(ctype_digit($rate)) {
+        if(is_numeric($rate)) {
             $this->_rate = $rate;
         }
         else {
@@ -258,5 +263,22 @@ class APIMessage {
         else {
             throw new BadRequest('originatingCountry field is invalid.');
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize() {
+
+        return array(
+            'userid'                => $this->_userid,
+            'currencyFrom'          => $this->_currencyFrom,
+            'currencyTo'            => $this->_currencyTo,
+            'amountSell'            => $this->_amountSell,
+            'amountBuy'             => $this->_amountBuy,
+            'rate'                  => $this->_rate,
+            'timePlaced'            => $this->_timePlaced,
+            'originatingCountry'    => $this->_originatingCountry
+        );
     }
 }

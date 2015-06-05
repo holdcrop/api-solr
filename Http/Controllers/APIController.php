@@ -20,7 +20,7 @@ class APIController extends Controller {
 
         $solr = new Client($this->_config->offsetGet('solr'));
 
-        $response->setBody(array('message' => 'Here'));
+        $response->setBodyEncoded($message);
 
         return $response;
     }
