@@ -14,9 +14,9 @@ class RequestMethod extends Middleware {
      */
     public function handle(Request $request) {
 
-        $methods = $this->_config->offsetGet('request_methods')->toArray();
+        $methods = $this->_config->offsetGet('request_methods');
 
-        if(in_array($request->getServer('REQUEST_METHOD'), $methods) != true) {
+        if(in_array($request->getServer('REQUEST_METHOD'), $methods->getConfig()) != true) {
 
             throw new MethodNotAllowed();
         }

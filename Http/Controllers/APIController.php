@@ -2,12 +2,14 @@
 
 namespace Http\Controllers;
 
+use Http\Controllers\Contract\SolrAwareTrait;
 use Http\Request\Request;
 use Http\Response\Response;
 use Resources\Entities\APIMessage;
-use Solarium\Client;
 
 class APIController extends Controller {
+
+    use SolrAwareTrait;
 
     /**
      * @param   Request     $request
@@ -16,32 +18,18 @@ class APIController extends Controller {
      */
     public function post(Request $request, Response $response) {
 
+        $this->_initialiseSolrClient();
+
         $message = new APIMessage($request->getBody());
 
-        // Get the config
-        $solr_config = $this->_config->offsetGet('solr')->getConfig();
-
-        // Create the Solarium Config array
-        $solr_config = array(
-            'endpoint'   => array(
-                $solr_config['endpoint']    => array(
-                    'host'      => $solr_config['host'],
-                    'port'      => $solr_config['port'],
-                    'path'      => $solr_config['path'],
-                    'timeout'   => $solr_config['timeout'],
-                )
-            )
-        );
-
-        $solr = new Client($solr_config);
-
-        $update = $solr->createUpdate();
+        // Create the update document
+        $update = $this->_solr->createUpdate();
         $doc = $update->createDocument($message->jsonSerialize());
 
         $update->addDocument($doc);
-        $update->addCommit();
 
-        $response->setBodyEncoded(array('success' => $solr->update($update)->getResponse()));
+        // Send the update
+        $response->setBodyEncoded(array($this->_solr->update($update)->getResponse()));
 
         return $response;
     }

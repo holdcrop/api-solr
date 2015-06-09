@@ -52,7 +52,6 @@ class App {
         // Middleware
         $this->_middleware['app'] = array(
             new Middleware\RequestMethod($this->_config),
-            new Middleware\ContentType($this->_config),
             new Middleware\RateLimiter($this->_config)
         );
 
