@@ -51,8 +51,7 @@ class App {
 
         // Middleware
         $this->_middleware['app'] = array(
-            new Middleware\RequestMethod($this->_config),
-            new Middleware\RateLimiter($this->_config)
+            new Middleware\RequestMethod($this->_config)
         );
 
         // Response
@@ -120,6 +119,8 @@ class App {
                 case 'content-type':
                     $middleware = new Middleware\ContentType($this->_config);
                     break;
+                case 'rate-limiter':
+                    $middleware = new Middleware\RateLimiter($this->_config);
                 default:
                     $middleware = null;
                     break;

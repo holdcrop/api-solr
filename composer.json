@@ -1,6 +1,7 @@
 {
 	"require": {
-		"solarium/solarium": "3.3.0"
+		"solarium/solarium": "3.3.0",
+        "ghunti/highcharts-php": "~2.0"
 	},
     "autoload": {
         "psr-4" : {

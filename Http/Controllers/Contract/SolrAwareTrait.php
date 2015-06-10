@@ -13,8 +13,10 @@ trait SolrAwareTrait {
 
     /**
      * Initilise the Solr Client
+     *
+     * @param   array   $options
      */
-    protected function _initialiseSolrClient() {
+    protected function _initialiseSolrClient(array $options = array()) {
 
         // Get the config
         $solr_config = $this->_config->offsetGet('solr')->getConfig();
@@ -33,5 +35,9 @@ trait SolrAwareTrait {
 
         // Create the solr_client
         $this->_solr = new Client($solr_config);
+
+        if(!empty($options)) {
+            $this->_solr->setOptions($options);
+        }
     }
 }

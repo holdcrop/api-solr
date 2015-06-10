@@ -2,6 +2,6 @@
 
 use Http\Router;
 
-Router::post('/convert', 'APIController', 'post', array('content-type'));
+Router::post('/convert', 'APIController', 'post', array('content-type', 'rate-limiter'));
 
-Router::get('/admin', 'AdminController', 'index');
+Router::get('/', 'AdminController', 'index');

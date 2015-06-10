@@ -11,7 +11,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <!--<a href="/" class="navbar-brand"><img height="25" src="images/logo.png"></a>-->
+            <a href="/" class="navbar-brand"><img height="25" src="images/logo.png"></a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
@@ -29,7 +29,7 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Admin</h1>
+                <h1>Currency Fair</h1>
                 <p class="lead">Stats</p>
             </div>
         </div>
@@ -68,6 +68,14 @@
         </div>
     </div>
 
+    <div class="row">
+        <div id="highchart" class="col-md-12">
+
+        </div>
+    </div>
+
+    <hr>
+
     <footer>
 
         <div class="row">
@@ -90,6 +98,13 @@
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootswatch.js"></script>
+<script src="js/highcharts.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        <?php echo $options['chart']->render('chart'); ?>
+    });
+</script>
 
 </body>
 </html>
