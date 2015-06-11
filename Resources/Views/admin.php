@@ -74,6 +74,25 @@
         </div>
     </div>
 
+    <div class="row">
+       <form action="/refresh" method="post">
+            <div class="form-group">
+                <h4 class="col-lg-2 control-label">Time frame:</h4>
+                <div class="col-lg-4">
+                    <select id="time_frame" name="time_frame" class="form-control">
+                        <option value="60"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 60) echo ' selected="selected"'; ?>>Last Hour</option>
+                        <option value="30"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 30) echo ' selected="selected"'; ?>>Last 30 Minutes</option>
+                        <option value="20"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 20) echo ' selected="selected"'; ?>>Last 20 Minutes</option>
+                        <option value="10"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 10) echo ' selected="selected"'; ?>>Last 10 Minutes</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <input class="btn btn-success" type="submit" value="Refresh">
+                </div>
+            </div>
+        </form>
+    </div>
+
     <hr>
 
     <footer>
