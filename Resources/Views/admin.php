@@ -84,6 +84,8 @@
                         <option value="30"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 30) echo ' selected="selected"'; ?>>Last 30 Minutes</option>
                         <option value="20"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 20) echo ' selected="selected"'; ?>>Last 20 Minutes</option>
                         <option value="10"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 10) echo ' selected="selected"'; ?>>Last 10 Minutes</option>
+                        <option value="5"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 5) echo ' selected="selected"'; ?>>Last 5 Minutes</option>
+                        <option value="1"<?php if(array_key_exists('time_frame', $options) && $options['time_frame'] == 1) echo ' selected="selected"'; ?>>Last Minute</option>
                     </select>
                 </div>
                 <div class="col-lg-4">

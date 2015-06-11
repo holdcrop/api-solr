@@ -97,6 +97,9 @@ class AdminController extends Controller {
             case 5:
                 $time_frame = $time_frame . ' minutes ago';
                 break;
+            case 1:
+                $time_frame = '1 minute ago';
+                break;
             default:
                 $time_frame = '1 hour ago';
                 break;
