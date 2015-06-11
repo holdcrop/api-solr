@@ -12,7 +12,7 @@ Otherwise, remove the _RateLimiter_ instance from the list of middleware to be r
 
 ## Notes:
 * https://github.com/solariumphp/solarium/pull/328/files
-** Applied this fix to the Solarium Core in order to use Solr Version 5.1
+* Applied this fix to the Solarium Core in order to use Solr Version 5.1
 ```php
     if (!isset($options['headers']['Content-Type'])) {
         if($request->getHandler() == 'update') {
